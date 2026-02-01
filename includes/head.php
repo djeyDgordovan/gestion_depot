@@ -1,7 +1,6 @@
 <!-- Titre et logo -->
 
-<title>Congo Booking</title>
-<link rel="icon" type="image/png" href="assets/images/head.png">
+<title>Gestion de depot</title>
 
 <!-- Titre et logo -->
 
@@ -27,11 +26,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Fontawesone & googles fonts -->
-
-<script>
-    let hotelsData = <?= json_encode($hotels, JSON_UNESCAPED_UNICODE); ?>;
-</script>
-
 <!-- Fontawesone & googles fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
