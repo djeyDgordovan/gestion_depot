@@ -1,34 +1,58 @@
-<?php 
-include_once "_config/db.php";
+<?php
+session_start();
+require_once "_config/db.php";
 
-// Récupération des données
-$nom = $_POST['nom'];
-$username = $_POST['username'];
-$email = $_POST['email'];
-$telephone = $_POST['telephone'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-// Sécurisation du rôle
-$role = $_POST['role'];
-$rolesAutorises = ['vendeur', 'gestionnaire'];
-if (!in_array($role, $rolesAutorises)) {
-    $role = 'vendeur';
+    $nom     = trim($_POST["nom"]);
+    $prenom  = trim($_POST["prenom"]);
+    $email   = trim($_POST["email"]);
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+    $role    = $_POST["role"];
+
+    // Vérification mot de passe
+    if ($password !== $confirm_password) {
+        $error = "Les mots de passe ne correspondent pas.";
+    } else {
+
+        // Vérifier si email existe déjà
+        $check = $pdo->prepare("SELECT id FROM utilisateur WHERE email = ?");
+        $check->execute([$email]);
+
+        if ($check->rowCount() > 0) {
+            $error = "Cet email est déjà utilisé.";
+        } else {
+
+            // Hachage du mot de passe
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insertion
+            $sql = "INSERT INTO utilisateur (nom, prenom, email, password, role)
+                    VALUES (?, ?, ?, ?, ?)";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                $nom,
+                $prenom,
+                $email,
+                $hashedPassword,
+                $role
+            ]);
+
+            // Stocker rôle en session
+            $_SESSION["user_role"] = $role;
+
+            // Redirection selon le rôle
+            if ($role === "admin") {
+                header("Location: admin/index.php");
+            } else {
+                header("Location: vendeur/index.php");
+            }
+            exit;
+        }
+    }
 }
-
-// Vérification si username ou email existe
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-$stmt->execute([$username, $email]);
-if ($stmt->rowCount() > 0) {
-    die("Le nom d'utilisateur ou l'email existe déjà.");
-}
-
-// Insertion
-$stmt = $pdo->prepare("INSERT INTO users (nom, username, email, telephone, password, role) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->execute([$nom, $username, $email, $telephone, $password, $role]);
-
-header("Location: home_page.php");
-exit();
-
 ?>
 
 <!DOCTYPE html>
@@ -36,70 +60,71 @@ exit();
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container min-vh-100 d-flex align-items-center">
-    <div class="row w-100 shadow rounded overflow-hidden bg-white">
+<div class="container-fluid vh-100">
+    <div class="row h-100">
 
         <!-- Image à gauche -->
-        <div class="col-md-6 d-none d-md-block p-0">
-            <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786"
-                class="img-fluid h-100 w-100 object-fit-cover"
-                alt="Inscription"
-            >
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
+            <img src="https://via.placeholder.com/400x500" class="img-fluid rounded" alt="Inscription">
         </div>
 
-        <!-- Formulaire à droite -->
-        <div class="col-md-6 p-5">
-            <h3 class="text-center mb-4">Créer un compte</h3>
+        <!-- Formulaire -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="w-75">
+                <h2 class="mb-4 text-center">Inscription</h2>
 
-            <form>
-                <div class="mb-3">
-                    <label class="form-label">Nom complet</label>
-                    <input type="text" class="form-control" placeholder="Votre nom" required>
-                </div>
+                <!-- Message erreur -->
+                <?php if (!empty($error)) : ?>
+                    <div class="alert alert-danger">
+                        <?= $error ?>
+                    </div>
+                <?php endif; ?>
 
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" placeholder="Votre email" required>
-                </div>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Nom</label>
+                        <input type="text" name="nom" class="form-control" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" placeholder="Mot de passe" required>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Prénom</label>
+                        <input type="text" name="prenom" class="form-control" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Confirmer le mot de passe</label>
-                    <input type="password" class="form-control" placeholder="Confirmation" required>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
 
-                <!-- Sélection du rôle -->
-                <div class="mb-4">
-                    <label class="form-label">Rôle</label>
-                    <select class="form-select" required>
-                        <option value="">-- Sélectionner un rôle --</option>
-                        <option value="vendeur">Vendeur</option>
-                        <option value="administrateur">Administrateur</option>
-                    </select>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mot de passe</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
 
-                <div class="d-grid">
-                    <button class="btn btn-success">S'inscrire</button>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirmer mot de passe</label>
+                        <input type="password" name="confirm_password" class="form-control" required>
+                    </div>
 
-                <div class="text-center mt-3">
-                    <small>
-                        Déjà un compte ?
-                        <a href="login.php">Se connecter</a>
-                    </small>
-                </div>
-            </form>
+                    <div class="mb-3">
+                        <label class="form-label">Rôle</label>
+                        <select name="role" class="form-select" required>
+                            <option value="">-- Choisir --</option>
+                            <option value="admin">Administrateur</option>
+                            <option value="vendeur">Vendeur</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary">S'inscrire</button>
+                    </div>
+                </form>
+
+            </div>
         </div>
 
     </div>
