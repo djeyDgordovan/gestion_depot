@@ -42,13 +42,13 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li><hr class="dropdown-divider"></li>
 
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="profil.php">
                         <i class="bi bi-person me-2"></i> Mon profil
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square me-2"></i> Modifier le profil
+                    <a class="dropdown-item" href="dash/index.php">
+                        <i class="bi bi-pencil-square me-2"></i> DashBoard
                     </a>
                 </li>
                 <li>
@@ -60,7 +60,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li><hr class="dropdown-divider"></li>
 
                 <li>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="deconnexion.php">
                         <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
                     </a>
                 </li>
