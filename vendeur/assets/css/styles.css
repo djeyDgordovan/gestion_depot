@@ -1,0 +1,438 @@
+/* Navbar buttons custom */
+.btn-custom {
+  border-radius: 20px;
+}
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+
+/* style username */
+.username {
+  border-right: 2px solid #007bff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* style username */
+
+/* Navbar background */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: white;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd700;
+}
+/* Banner */
+.banner {
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80")
+    no-repeat center center;
+  background-size: cover;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Search Bar */
+.search-bar {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.search-bar .form-control,
+.search-bar .form-select {
+  border-radius: 8px;
+}
+
+.search-bar button {
+  background-color: #0071c2;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+.search-bar button:hover {
+  background-color: #005b9a;
+}
+ #welcome-message {
+    font-size: 2em;
+    color: white;
+}
+#welcome-message span {
+  color: #007bff;
+  font-weight: 800;
+}
+
+/* Offer Card */
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f1ea;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  height: 100%;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-text {
+  padding: 20px;
+}
+
+.offer-link {
+  margin-top: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+.offer-link:hover {
+  text-decoration: underline;
+}
+
+.offer-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .offer-card {
+    flex-direction: row;
+    height: 200px;
+  }
+
+  .offer-text {
+    flex: 1;
+  }
+
+  .offer-image {
+    flex: 1;
+    height: auto;
+  }
+}
+/*section Trois */
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* fond noir transparent */
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+/*section Trois */
+/* style card hotel pour page d'accueil */
+
+/* Section Hôtels - Style amélioré */
+
+/* Animation d’apparition des cartes */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  transform: translateY(0);
+  background: #fff;
+}
+
+/* Zoom et élévation au survol */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image effet zoom */
+.card img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* Badge stylé */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.4em 0.7em;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: 1rem 1.2rem;
+  background-color: #fff;
+}
+
+/* Titres et textes */
+.card-title {
+  color: #333;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+/* Prix */
+.card-body strong {
+  color: #198754;
+}
+
+.card-body del {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Bouton Voir plus */
+.btn-primary {
+  background: linear-gradient(135deg, #0d6efd, #007bff);
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #007bff, #0a58ca);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* style card hotel pour page d'accueil */
+
+/* style de la page destination */
+.destination-card img {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.destination-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80")
+      center/cover;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-weight: 600;
+}
+
+.btn-reserver {
+  background-color: #198754;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.btn-reserver:hover {
+  background-color: #157347;
+}
+/* style de la page destination */
+
+/* Style galerie d'imaeges */
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.position-relative img,
+.img-fluid.rounded {
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.position-relative img:hover,
+.img-fluid.rounded:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Style du modal */
+.modal-body img {
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.modal-body img:hover {
+  transform: scale(1.02);
+}
+
+.modal-navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.modal-navigation button {
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  pointer-events: all;
+}
+
+.modal-navigation button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+/* Style galerie d'imaeges */
+
+/* Page profile */
+.profile-header {
+  background: linear-gradient(to right, #0d6efd, #0dcaf0);
+  color: white;
+  padding: 40px;
+  border-radius: 0 0 30px 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.profile-img {
+  position: relative;
+  display: inline-block;
+}
+.profile-img img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #0d6efd;
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+.stats-card {
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+.tab-content {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  padding: 25px;
+}
+/* Page profile *
