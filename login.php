@@ -34,26 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php include_once "includes/head.php" ?>
+<style>
+    .login-container {
+        height: 100vh;
+    }
 
-    <style>
-        .login-container {
-            height: 100vh;
-        }
-
-        .login-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
-</head>
+    .login-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 
 <body>
 
@@ -126,5 +119,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
 </body>
-
-</html>
+<?php include_once "includes/link.php" ?>
