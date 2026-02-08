@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!-- Image à gauche -->
         <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
-            <img src="https://via.placeholder.com/400x500" class="img-fluid rounded" alt="Inscription">
+            <img src="assets/images/2.jfif" class="img-fluid rounded" alt="Inscription">
         </div>
 
         <!-- Formulaire -->
