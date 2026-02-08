@@ -1,3 +1,9 @@
+<?php
+// Démarrer la session
+session_start();
+?>
+
+
 <?php include_once "includes/head.php" ?>
 
 <body class="bg-light">
